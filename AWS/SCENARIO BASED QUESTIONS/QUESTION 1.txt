@@ -1,0 +1,174 @@
+
+Search
+Write
+
+Www Asokan
+Get unlimited access to the best of Medium for less than $1/week.
+Become a member
+
+
+Top 10+ Scenerios based AWS Interview questions and answers| Part-1
+Scenarios-based AWS interview questions for experienced professionals | aws interview questions for 2+ year's experience | aws tough interview questions | Experienced DevOps Interview
+Manoj Kumar
+Manoj Kumar
+
+·
+Follow
+
+11 min read
+·
+Feb 6, 2023
+224
+
+
+3
+
+
+
+
+
+Question-1 : How would you set up a highly available web application in AWS using EC2, ELB, and Auto Scaling?
+A high-level overview of the steps to set up a highly available web application in AWS using EC2, ELB, and Auto Scaling:
+
+· Launch multiple EC2 instances in multiple Availability Zones (AZs) to provide high availability.
+
+· Create an Elastic Load Balancer (ELB) to distribute incoming traffic evenly across all EC2 instances in different AZs.
+
+· Set up Auto Scaling for the EC2 instances to automatically add or remove instances based on demand and maintain the desired number of instances.
+
+· Use Amazon RDS or Amazon DynamoDB for database services to ensure that the database layer is highly available and scalable.
+
+· Store your application data in Amazon S3 or use Amazon EBS volumes with multiple AZs to ensure data durability.
+
+· Set up Amazon Route 53 for routing traffic to the ELB.
+
+· Use Amazon CloudWatch to monitor the performance of the EC2 instances, ELB, and the overall system, and set up alarms to automatically trigger scaling events based on specified thresholds.
+
+· Use Amazon SNS to receive notifications about the state of your EC2 instances, ELB, and Auto Scaling.
+
+· Finally, configure security groups for EC2 instances and ELB to allow only required incoming and outgoing traffic.
+
+Question-2: Can you explain the steps to configure a VPC with public and private subnets, including network access control and security group rules?
+Here’s a high-level overview of the steps to configure a VPC with public and private subnets, including network access control and security group rules:
+
+· After creating VPC, create public and private subnets in different Availability Zones (AZs) within the VPC. Set up an Internet Gateway and attach it to the VPC.
+
+· Configure a route table for the public subnets, with a route to the Internet Gateway for internet access.
+
+· Configure a separate route table for the private subnets, with no direct route to the Internet Gateway.
+
+· Create Network Access Control Lists (NACLs) to define inbound and outbound traffic rules for the public and private subnets.
+
+· Create security groups for instances in the public subnets, with rules to allow incoming traffic for HTTP, HTTPS, and other required ports.
+
+· Create security groups for instances in the private subnets, with rules to allow only necessary incoming and outgoing traffic, such as traffic from the public subnets or other trusted sources.
+
+· Launch EC2 instances in the public and private subnets and associate them with the appropriate security groups.
+
+· Optionally, set up a NAT Gateway in the public subnet to allow instances in the private subnet to access the internet for updates or other needs.
+
+Question-3: How would you implement a disaster recovery solution in AWS using RDS, EC2, and S3?
+· Create an Amazon RDS instance in a primary region, and configure automatic backups to Amazon S3.
+
+· Create an Amazon EC2 instance in the same primary region
+
+· Create an Amazon S3 bucket to store data backups, and configure the RDS instance to store backups in the S3 bucket.
+
+· Set up an Amazon EC2 instance in a secondary region and install the necessary software to access the S3 bucket.
+
+· Create an Amazon RDS instance in the secondary region and configure it as a replica of the primary RDS instance.
+
+· Configure the secondary RDS instance to automatically fail over to the primary RDS instance in case of a disaster in the secondary region.
+
+· Regularly test the failover process to ensure it is working as expected.
+
+· Use Amazon S3 versioning and object lifecycle management policies to retain backups for a desired period of time.
+
+· Use Amazon CloudWatch to monitor the RDS instances and EC2 instances, and set up alarms to trigger notifications or automated actions in case of a disaster.
+
+Question-4: How would you use AWS Lambda and API Gateway to build a serverless REST API?
+Please follow the below steps steps to use AWS Lambda and API Gateway to build a serverless REST API:
+
+· Create an AWS Lambda function that implements the desired API functionality
+
+· Create an Amazon API Gateway REST API and define the desired API endpoint paths and HTTP methods (e.g. GET, POST, etc.).
+
+· Connect the API Gateway to the Lambda function, mapping each API endpoint to a specific function in your Lambda code.
+
+· Configure the API Gateway to handle incoming requests and pass them to the Lambda function for processing.
+
+· Set up the API Gateway to handle API authentication, authorization, and request/response mapping as desired.
+
+· Test the API by sending requests to the API Gateway and checking the responses from the Lambda function.
+
+· Optionally, enable caching in API Gateway to improve API performance by caching API responses.
+
+· Optionally, use Amazon CloudWatch Logs to monitor and troubleshoot the API Gateway and Lambda function.
+
+· Deploy the API to a desired stage (e.g. prod, dev, test) to make it publicly accessible.
+
+Question-5: Can you describe a scenario in which you would use AWS Elastic Beanstalk to deploy an application?
+AWS Elastic Beanstalk is a fully managed service offered by Amazon Web Services that allows developers to easily deploy, run and scale web applications. The service is ideal for situations where a developer has created a web application using a popular framework, such as Ruby on Rails, Node.js, or Java, and is looking to quickly deploy the application to a production environment with minimal overhead. AWS Elastic Beanstalk takes care of provisioning the necessary resources, such as EC2 instances, load balancers, databases and security groups, and sets up a fully functional environment for the application. This eliminates the need for the developer to manage the underlying infrastructure, freeing them up to focus on the development and maintenance of the application itself. Monitoring the health of the application can be done using AWS Elastic Beanstalk’s built-in monitoring and reporting features, and updates and changes can be made as needed. This makes AWS Elastic Beanstalk a simple, streamlined solution for deploying and managing web applications, particularly well-suited for developers who want a straightforward way to handle the deployment and management of their applications.
+
+Question-6: How would you use AWS S3, CloudFront, and Route 53 for a scalable and highly available static website?
+AWS S3, CloudFront, and Route 53 can be used together to build a scalable and highly available static website. Here’s an overview of the process:
+
+· Store the website files in an Amazon S3 bucket and make the files publicly accessible.
+
+· Create a CloudFront distribution, which is Amazon’s global content delivery network (CDN), and configure it to use the S3 bucket as its origin. This allows CloudFront to serve the website files from edge locations around the world, ensuring fast and low-latency access for visitors.
+
+· Use Amazon Route 53, the highly available and scalable DNS service, to associate a custom domain name with the CloudFront distribution, so visitors can access the website using a familiar and memorable domain name.
+
+· Configure Route 53 to use the health checks and failover features to ensure that the website is always available, even if one of the edge locations becomes unavailable. Finally, use S3’s versioning and lifecycle policies to automatically store multiple versions of the website files and to transition older versions to less expensive storage options over time.
+
+Question-7: Can you describe the process of setting up a continuous delivery pipeline in AWS using CodePipeline and CodeBuild?
+AWS CodePipeline and CodeBuild are two services that can be used to set up a continuous delivery pipeline for applications. The pipeline automates the software delivery process, from the integration of code changes to the deployment of new features and bug fixes to testing and production environments. The process of setting up a continuous delivery pipeline with CodePipeline and CodeBuild can be broken down into the following steps:
+
+· Store the source code in a repository: The source code of the application should be stored in a Git repository, such as AWS CodeCommit. This allows for version control and collaboration among developers.
+
+· Create a CodeBuild project: CodeBuild is used to compile the source code and generate the build artifact. This artifact contains the compiled code and any necessary resources to deploy the application.
+
+· Create a CodePipeline pipeline: CodePipeline is the service that orchestrates the delivery pipeline. In this service, the pipeline is created, and the various stages of the delivery process are defined.
+
+· Add the build stage: In the build stage, CodePipeline is configured to use CodeBuild to compile the source code and generate the build artifact.
+
+· Add the test stage: In the test stage, CodePipeline is configured to run automated tests on the build artifact to ensure that the application is working as expected.
+
+· Add the deploy stage: In the deploy stage, CodePipeline is configured to deploy the build artifact to a testing or production environment. This can be done using AWS services such as CloudFormation, Elastic Beanstalk, or a custom deployment method.
+
+· Set up a trigger: Finally, a trigger is set up in the source code repository so that every time a change is pushed to the repository, the pipeline is automatically triggered, and the delivery process begins.
+
+Question-8: How would you use Amazon SNS and SQS for asynchronous communication and message processing in a microservices architecture?
+Amazon Simple Notification Service (SNS) and Simple Queue Service (SQS) are two AWS services that can be used for asynchronous communication and message processing in a microservices architecture. SNS provides a publish/subscribe messaging system, while SQS provides a message queuing system. These two services can be used together to build a scalable and flexible message-processing system.
+
+In this architecture, one microservice can publish a message to an SNS topic, and multiple microservices can subscribe to the same topic to receive the message. The message can then be stored in an SQS queue, where worker microservices can process the message asynchronously. This allows for decoupled communication between microservices and enables the processing of high volumes of messages in parallel.
+
+Dead-letter queues can also be set up in SQS to store messages that cannot be processed for some reason. This allows for messages to be retried later or for administrators to investigate the cause of the failure. The system can be monitored and managed using AWS CloudWatch and the AWS Management Console, providing visibility into the status of messages, the number of messages in the queue, and the performance of worker microservices.
+
+Question-9: How would you use AWS CloudTrail and CloudWatch to monitor and log AWS resource activity and events?
+AWS CloudTrail and CloudWatch are two services that can be used to monitor and log AWS resource activity and events. CloudTrail records API calls made to AWS services and stores information about the caller, time of call, source IP address, request parameters, and response elements. This information can be used to track changes to AWS resources and identify security threats. CloudTrail trails can be created to specify the AWS resources for which API calls should be recorded and logs can be sent to CloudWatch Logs for central storage and analysis.
+
+CloudWatch Alarms can be set up to trigger when specific conditions are met, such as when an API call is made to a sensitive AWS resource. Alarms can be configured to send notifications to specified Amazon SNS topics or to stop or terminate an Amazon EC2 instance. The logs collected by CloudTrail and stored in CloudWatch Logs can be analyzed to identify trends, track resource activity, and diagnose issues.
+
+By using CloudTrail and CloudWatch, organizations can have a comprehensive view of AWS resource activity and events, enabling them to identify security threats, troubleshoot issues, and meet compliance requirements. The centralized logging and analysis provided by these services helps organizations to ensure the security and availability of their AWS resources, giving them greater control and visibility into their cloud infrastructure.
+
+Question-10: Can you describe the process of using AWS Glue and Athena for data lake analytics and ad-hoc queries?
+AWS Glue and Athena provide a cost-effective and scalable solution for data lake analytics and ad-hoc queries. To utilize these services, you first store raw data in Amazon S3. Next, you create an AWS Glue Data Catalog, which is a centralized repository that stores metadata about your data, including schema and table definitions. Then, you use the Glue crawler to inspect the data in S3 and create a schema, which is stored in the Glue Data Catalog. Once the schema is created, you can create an Athena table using the metadata stored in the Glue Data Catalog.
+
+Athena is a serverless query service that allows you to perform ad-hoc queries on your data stored in S3 using standard SQL. You can then run these queries using Athena and visualize the results using tools like Amazon QuickSight. By utilizing these services, you can eliminate the need for managing infrastructure and perform data lake analytics with ease.
+
+The process of using AWS Glue and Athena for data lake analytics and ad-hoc queries can be described as follows:
+· Store raw data in Amazon S3: The first step is to store raw data in Amazon S3. S3 can be used as a data lake to store large amounts of structured and unstructured data.
+
+· Create an AWS Glue Data Catalog: The next step is to create an AWS Glue Data Catalog. The Glue Data Catalog is a centralized repository that stores information about data sources and the metadata for your data, including the schema and table definitions.
+
+· Crawl the data in S3: Once the Glue Data Catalog is created, the data in S3 can be crawled using AWS Glue. The Glue crawler inspects the data in S3 and creates a schema for the data, which is then stored in the Glue Data Catalog.
+
+· Create an Athena table: Once the data is crawled and a schema is created, an Athena table can be created using the metadata stored in the Glue Data Catalog. Athena is a serverless query service that allows you to perform ad-hoc queries on data stored in S3 using standard SQL.
+
+· Run queries using Athena: With the Athena table created, you can now run ad-hoc queries on the data stored in S3. Athena queries are executed against the metadata in the Glue Data Catalog, not the data stored in S3, which makes query execution faster.
+
+· Visualize the data: The results of Athena queries can be visualized using tools such as Amazon QuickSight, which allows you to create interactive visualizations, dashboards, and reports.
+
+
+
